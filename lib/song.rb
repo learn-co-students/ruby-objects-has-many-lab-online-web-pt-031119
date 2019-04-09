@@ -3,15 +3,16 @@ class Song
   @@all = []
 
   def initialize(song)
-    @@all << song
+    @name = song
+    @@all << self
 
   end
 
-  def artist=(artist)
-    @artist = artist
-    artist.add_song(self) if !artist.songs.include?(self)
+  #def artist=(artist)
+    #@artist = artist
+   # artist.add_song(self) if !artist.songs.include?(self)
 
-  end
+  #end
 
   def name
     @name
@@ -19,6 +20,11 @@ class Song
 
   def self.all
     @@all
+  end
+
+  def artist_name
+    @artist.name if artist
+
   end
   
 end

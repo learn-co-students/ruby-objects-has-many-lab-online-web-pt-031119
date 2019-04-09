@@ -1,20 +1,33 @@
+require 'pry'
+
 class Artist
-  attr_accessor :name, :songs, :song_count, :song
+  attr_accessor :name
+
+  @@all = []
 
   def initialize(name)
     @name = name
-    @songs = []
+    @@all << self
 
   end
 
+  def self.all
+    @@all
+  end
+
   def add_song_by_name(song)
-    @songs << song
+    new_song = Song.new(song)
+    new_song.artist = self
+
+  end
+
+  def songs
+    Song.all.select {|song| song.artist==self}
 
   end
 
   def add_song(song)
-    @songs << song
-    song.artist = self if song.artist != self
+    song.artist = self
 
   end
 
@@ -23,8 +36,15 @@ class Artist
 
   end
 
-  def song_count
-    @songs.size
+  def self.song_count
+    array = []
+    @@all.each do |songs|
+      if array.include?(songs.name) == false
+        array << songs.name
+      end
+    end
+    array.size
+    #binding.pry
   end
 
   
