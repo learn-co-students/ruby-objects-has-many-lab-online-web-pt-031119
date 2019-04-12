@@ -11,21 +11,8 @@ class Post
   end
 
   def author_name
-    # binding.pry
-
-    # @name = author.name if @name != nil
-    # binding.pry
+    binding.pry
     author.name if author
-    # binding.pry
-    # # nil if !author.name
-    # name = Author.new
-    # post.author = name
-    #
-    # post.author = self
-    # binding.pry
-    # name = post.author
-    # binding.pry
-    # self.author
   end
 
   def self.all
